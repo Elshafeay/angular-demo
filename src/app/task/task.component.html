@@ -1,0 +1,28 @@
+<input type="text" placeholder="Create New Task..." [(ngModel)]="taskText">
+<button (click)="createTask()">Create Task</button>
+
+<h2>Task List</h2>
+<div *ngFor="let task of tasks">
+  <ul>
+    <li> ID: {{ task.id }} </li>
+    <li> Title: {{ task.name | titlecase }} </li>
+    <li> Created At: {{ task.createdAt | date:'medium' }} </li>
+    <li> Status: {{ task.isFinished | taskStatus }} </li>
+    <div *ngIf="!task.isFinished">
+      <button (click)="completeTask(task.id)" name="task.id">Complete</button>
+    </div>
+  </ul>
+</div>
+
+
+<h2>Product List</h2>
+<div *ngFor="let product of products">
+  <ul>
+    <li> ID: {{ product.id }} </li>
+    <li> Title: {{ product.title | titlecase }} </li>
+    <li> Description: {{ product.description }} </li>
+    <li> price: {{ product.price | currency }} </li>
+    <br>
+    <img src="{{ product.thumbnail }}" width="400" height="200">
+  </ul>
+</div>
